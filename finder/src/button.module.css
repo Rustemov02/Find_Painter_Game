@@ -1,0 +1,43 @@
+.btn {
+    font-size: 20px;
+    padding: 7px 20px;
+    border: none;
+    margin: 5px 3px;
+    background-color: #442ed1;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: .5s;
+}
+
+.btn:hover {
+    background-color: #271a7e;
+}
+
+.modal {
+    border: solid white 4px;
+    background: white;
+    width: 60%;
+    margin: auto;
+    padding: 12px 10px;
+}
+
+.correct {
+    border: none;
+    padding: 7px 20px;
+    margin: 5px 3px;
+    border-radius: 10px; 
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(14, 174, 87, 1) 0%, rgba(12, 116, 117, 1) 90%);
+    color: white;
+    font-size: 20px;
+}
+
+.incorrect { 
+    background-image: radial-gradient(circle farthest-corner at 10.2% 55.8%, rgba(252, 37, 103, 1) 0%, rgba(250, 38, 151, 1) 46.2%, rgba(186, 8, 181, 1) 90.1%);
+    color: white;
+    font-size: 20px;
+    border: none;
+    padding: 7px 20px;
+    margin: 5px 3px;
+    border-radius: 10px;
+}

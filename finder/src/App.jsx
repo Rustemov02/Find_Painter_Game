@@ -1,11 +1,12 @@
 import React from 'react'
 import './reset.css'
-import Question from './Question'
+import './App.css'
+import Question from './Question' 
 
 export default function App(){
- 
+   
   return(
-    <div > 
+    <div className='main'> 
       <Question/>
     </div>
   )
