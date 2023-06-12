@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import qBank from './QuestionsBank'
 import styles from './button.module.css'
 import GameOver from './GameOver'
+import Score from './Score'
 
 function Question() {
 
@@ -10,6 +11,7 @@ function Question() {
     const [disabled, setDisabled] = useState(false)
     let [trueAnswer, setTrueAnswer] = useState(0)
     let [falseAnswer, setFalseAnswer] = useState(0)
+    let [point, setPoint] = useState(0)
     const [gameOver, setGameOver] = useState(false)
 
     const disabledAllButtons = () => {
@@ -21,40 +23,25 @@ function Question() {
         const nextLevel = () => {
             setTimeout(() => {
                 countQuestion > 3 ? setGameOver(true) : setCountQuestion(countQuestion += 1)
-                answer.className = `${styles.btn}` //default class name
+                answer.className = `${styles.btn}`
                 setDisabled(false)
             }, '1000');
         }
 
-        // const reveal = () => {
-        //     variants.forEach(item => {
-        //         //  console.log(item) // all list as single
-        //         //  console.log(variants) // all list as array
-        //         console.log(qBank[countQuestion].answer)
-        //         if(item == qBank[countQuestion].answer) return 
-        //     })  
-        // }
-
-
         if (answer.innerText !== qBank[countQuestion].answer) {
-            //incorrect answer
-
             answer.className = `${styles.incorrect}`
             setFalseAnswer(falseAnswer += 1)
-            nextLevel()
         } else {
-            //correct answer
-
             answer.className = `${styles.correct}`
             setTrueAnswer(trueAnswer += 1)
-            nextLevel()
+            setPoint(point += 10)
         }
+        nextLevel()
     }
     return (
         !gameOver ?
             (
                 <div className={`${styles.modal}`}>
-                    {/* <h2>Question {qBank[countQuestion].id}</h2> */}
                     <img src={qBank[countQuestion].img} style={{ width: '100%' }} />
                     <h5>Which artist painted this picture?</h5>
                     <div style={{ border: "solid white 1px", display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
@@ -69,21 +56,10 @@ function Question() {
                             >{item}</button>
                         ))}
                     </div>
-
-                    <div style={{
-                        position: 'absolute',
-                        top: 80,
-                        left: 30,
-                        fontSize: 23
-                    }}>
-                        <p>True : {trueAnswer}</p>
-                        <p>False : {falseAnswer}</p>
-                    </div>
-
-
+                    <Score trueAns={trueAnswer} falseAns={falseAnswer} />
                 </div>) :
             (
-                <GameOver truePoint={trueAnswer} falsePoint={falseAnswer} />
+                <GameOver point={point} />
             )
     )
 
