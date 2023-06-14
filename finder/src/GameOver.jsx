@@ -31,6 +31,7 @@ function GameOver({ point }) {
             <div style={{}}>
                 <button style={buttonStyle} onClick={() => window.location.reload()}>Restart Game</button>
                 {!showAnswer && <button style={buttonStyle} onClick={() => setShowAnswer(true)}>Show true answer</button>}
+                <button style={buttonStyle} onClick={()=>window.location.href = 'https://github.com/Rustemov02?tab=repositories'}>Get More Game</button>
             </div>
 
             {showAnswer && <Answer />}

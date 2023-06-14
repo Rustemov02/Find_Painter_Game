@@ -15,12 +15,17 @@
 }
 
 .modal {
-    border: solid white 4px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background: white;
     width: 60%;
+    min-width: 550px;
     margin: auto;
     padding: 12px 10px;
 }
+
 
 .correct {
     border: none;
